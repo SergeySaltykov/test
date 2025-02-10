@@ -8,7 +8,6 @@ const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 
-/*TODO настроить react-router под vite*/
 root.render(
     <React.StrictMode>
       <BrowserRouter>

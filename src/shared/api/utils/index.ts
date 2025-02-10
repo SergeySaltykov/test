@@ -26,7 +26,7 @@ export const transformCocktails = (data: any): TIngredients => {
     return Array.from(map);
 }
 
-/*TODO получилось немного не универсальной, поэтому пускай лежит тут*/
+//  получилось немного не универсально, поэтому пускай лежит тут*/
 export const getData = <T extends Record<string, any>>(list: T[], uniqIdKey: keyof T): TGetDataWithIngredients<T> => {
     return list.reduce((res: TGetDataWithIngredients<T>, cur: T) => {
         const id = cur[uniqIdKey] as string;
