@@ -1,5 +1,6 @@
 import React, { FC, Suspense } from 'react';
 import { Navigate, Route, Routes as Switch } from 'react-router';
+
 import { tabsConfig } from '../shared/constants/tabs';
 import { NotFound } from '../shared/ui';
 import ErrorBoundary from '../shared/ui/ErrorBoundary/ErrorBoundary';

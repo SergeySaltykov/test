@@ -1,6 +1,6 @@
 import { RefObject, useEffect } from 'react';
 
-export const useIntersectionObserver = <T extends Element>(targetRef: RefObject<T>, onIntersect: () => void, options?: IntersectionObserverInit) => {
+export const useIntersectionObserver = <T extends Element>(targetRef: RefObject<T|null>, onIntersect: () => void, options?: IntersectionObserverInit) => {
     useEffect(() => {
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {

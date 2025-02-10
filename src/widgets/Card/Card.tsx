@@ -1,7 +1,8 @@
-import React, { FC, memo } from 'react';
+import { FC, memo } from 'react';
+
 import { useCocktailsStore } from '../../app/store/store';
-import './styled.scss';
 import LazyImg from './component/LazyImg/LazyImg';
+import './styled.scss';
 
 interface ICardProps {
     id: string;
