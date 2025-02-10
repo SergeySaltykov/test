@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import Routes from './Routes';
 import { Container, Layout, Tabs } from '../shared/ui';
 import { tabsConfig } from '../shared/constants/tabs';

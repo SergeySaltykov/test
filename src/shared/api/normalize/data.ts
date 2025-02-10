@@ -8,7 +8,7 @@ export const normalizeData = <T extends Record<string, any>>(list: T[], uniqIdKe
     error: null,
 });
 
-export const resetData = <T>(): IResetData<ResponseDrinks> => ({
+export const resetData = (): IResetData<ResponseDrinks> => ({
     list: [],
     data: {},
     error: null,
