@@ -1,0 +1,24 @@
+@import '../../../app/styles/variables';
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 80%;
+  width: 100%;
+
+  @media (max-width: $small) {
+    grid-template-columns: 1fr;
+  }
+
+
+  & .right {
+    padding: 10px;
+    background-color: gray;
+    width: inherit;
+    box-sizing: border-box;
+  }
+
+  & .left {
+    overflow-y: auto;
+    padding: 15px;
+  }
+}

@@ -1,0 +1,63 @@
+@import '../../app/styles/variables';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 18px;
+
+  &-description {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+
+    @media (max-width: $medium) {
+      flex-direction: column;
+    }
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-category {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+  }
+
+  &-img {
+    width: 250px;
+    height: 250px;
+    min-width: 250px;
+
+    &.lazy {
+      background: lightgray;
+    }
+
+    img {
+      width: inherit;
+      height: inherit;
+    }
+  }
+
+  &-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: inherit;
+  }
+
+  &-ingredients {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &-header {
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+}
