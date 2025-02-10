@@ -1,4 +1,4 @@
-@import '../../../app/styles/variables';
+@use '../../../app/styles/variables';
 
 .tabs {
   &-list {
@@ -6,7 +6,7 @@
     flex-direction: column;
     gap: 15px;
 
-    @media (max-width: $small) {
+    @media (max-width: variables.$small) {
       flex-direction: row;
     }
   }

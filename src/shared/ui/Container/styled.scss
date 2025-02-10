@@ -1,11 +1,11 @@
-@import '../../../app/styles/variables';
+@use '../../../app/styles/variables';
 
 .container {
   display: grid;
   grid-template-columns: 1fr 80%;
   width: 100%;
 
-  @media (max-width: $small) {
+  @media (max-width: variables.$small) {
     grid-template-columns: 1fr;
   }
 
