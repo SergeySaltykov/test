@@ -12,7 +12,7 @@ export const useCocktailsStore = create<IUseCocktailsState>((set) => ({
     set({ loading: true });
 
     try {
-      const { list, data } = await fetchGetDrinks(code, signal);
+      const { list, data, error } = await fetchGetDrinks(code, signal);
 
       set((state) => {
         return {
@@ -24,6 +24,7 @@ export const useCocktailsStore = create<IUseCocktailsState>((set) => ({
             ...state.data,
             ...data,
           },
+          error,
         };
       });
     } catch (e: any) {

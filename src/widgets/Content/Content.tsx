@@ -26,7 +26,6 @@ export const Content: FC<IContentProps> = ({ tabs }) => {
       getCocktail: state.getCocktail,
       drinks: state.idLists[activeTab.label],
       loading: state.loading,
-      // error: state.error,
     })),
   );
   const controllerRef = useRef<AbortController | null>(null);
@@ -52,8 +51,6 @@ export const Content: FC<IContentProps> = ({ tabs }) => {
     return <div>Loading...</div>;
   }
 
-  /* TODO отдебажить ошибки и лоадинг */
-  // if (!isValidCocktailCode(cocktailCode) || error) {
   if (!isValidCocktailCode(cocktailCode)) {
     return <NotFound />;
   }
