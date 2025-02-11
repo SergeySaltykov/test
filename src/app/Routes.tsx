@@ -5,7 +5,7 @@ import { tabsConfig } from '../shared/constants/tabs';
 import { NotFound } from '../shared/ui';
 import ErrorBoundary from '../shared/ui/ErrorBoundary/ErrorBoundary';
 
-const Content = React.lazy(() => import('../widgets/Content/Content'));
+const Content = React.lazy(() => import('../widgets/add-drinks/Content/Content'));
 
 const Routes: FC = () => {
   const defaultTab = tabsConfig[0]?.path || '/';

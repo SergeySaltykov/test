@@ -2,12 +2,12 @@ import { FC, useEffect, useRef } from 'react';
 import { useParams } from 'react-router';
 import { useShallow } from 'zustand/react/shallow';
 
-import { Tab } from '../../shared/ui/Tabs/Tabs';
-import { useCocktailsStore } from '../../app/store/store';
-import { Card } from '../index';
-import { ECocktailCode } from '../../shared/types';
-import { addSlashConditional } from '../../shared/lib/utils';
-import { NotFound } from '../../shared/ui';
+import { Tab } from '../../../shared/ui/Tabs/Tabs.tsx';
+import { useCocktailsStore } from '../../../app/store/store.ts';
+import { Card } from '../index.ts';
+import { ECocktailCode } from '../../../shared/types';
+import { addSlashConditional } from '../../../shared/lib/utils';
+import { NotFound } from '../../../shared/ui';
 import './styled.scss';
 
 interface Params {

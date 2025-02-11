@@ -1,7 +1,7 @@
 import React, { FC, useRef } from 'react';
 import classNames from 'classnames';
 
-import { useIntersectionObserver } from '../../../../shared/lib/hooks';
+import { useIntersectionObserver } from '../../../../../shared/lib/hooks';
 import '../../styled.scss';
 
 interface ILazyImgProps {
