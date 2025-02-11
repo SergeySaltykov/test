@@ -22,7 +22,6 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
     console.error('ErrorBoundary error:', error, errorInfo);
   }
 
-
   render(): ReactNode {
     if (this.state.hasError) {
       return <p>Загрузка не удалась. Попробуйте обновить браузер!</p>;

@@ -5,12 +5,8 @@ interface ILayoutProps {
   children: ReactNode;
 }
 
-const Layout: FC<ILayoutProps> = ({children}) => {
-  return (
-    <div className='layout'>
-      {children}
-    </div>
-  );
-}
+const Layout: FC<ILayoutProps> = ({ children }) => {
+  return <div className="layout">{children}</div>;
+};
 
 export default Layout;

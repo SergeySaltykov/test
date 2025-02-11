@@ -4,32 +4,35 @@ import { INormalizeData, IResetData, ResponseDrinks } from '../types';
 import { ECocktailCode } from '../../types';
 
 // async await
-export const fetchGetDrinks = async (code: ECocktailCode, signal?: AbortSignal): Promise<INormalizeData<ResponseDrinks> | IResetData<ResponseDrinks>> => {
-    const controller = new AbortController();
-    const abortSignal = signal || controller.signal;
+export const fetchGetDrinks = async (
+  code: ECocktailCode,
+  signal?: AbortSignal,
+): Promise<INormalizeData<ResponseDrinks> | IResetData<ResponseDrinks>> => {
+  const controller = new AbortController();
+  const abortSignal = signal || controller.signal;
 
-    try {
-        const url = getDrinks(code);
-        const response = await fetch(url, {signal: abortSignal});
+  try {
+    const url = getDrinks(code);
+    const response = await fetch(url, { signal: abortSignal });
 
-        if (!response.ok) {
-            throw new Error(`Error status: ${response.status}`);
-        }
-
-        const { drinks } = await response.json();
-
-        if (!drinks) {
-            return resetData();
-        }
-
-        return normalizeData(drinks, 'idDrink');
-    } catch (error: any) {
-        console.error(error);
-        return {...resetData(), error};
-    } finally {
-        controller.abort();
+    if (!response.ok) {
+      throw new Error(`Error status: ${response.status}`);
     }
-}
+
+    const { drinks } = await response.json();
+
+    if (!drinks) {
+      return resetData();
+    }
+
+    return normalizeData(drinks, 'idDrink');
+  } catch (error: any) {
+    console.error(error);
+    return { ...resetData(), error };
+  } finally {
+    controller.abort();
+  }
+};
 
 // или через then catch. без раницы это всеголишь обертки
 // export const fetchGetDrinks = async (code: ECocktailCode): Promise<INormalizeData<ResponseDrinks>|{list: [], data: {}}> => {
@@ -51,4 +54,3 @@ export const fetchGetDrinks = async (code: ECocktailCode, signal?: AbortSignal):
 //         };
 //         });
 // }
-

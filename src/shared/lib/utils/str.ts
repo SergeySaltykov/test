@@ -1,9 +1,9 @@
 export const capitalizeLetterRegex = (str: string): string => {
-    return str.replace(/^./, (match) => match.toUpperCase());
-}
+  return str.replace(/^./, (match) => match.toUpperCase());
+};
 
 export const addSlashConditional = (str: string): string => {
-    const slash = '/';
+  const slash = '/';
 
-    return str.startsWith(slash) ? str : slash + str;
-}
+  return str.startsWith(slash) ? str : slash + str;
+};

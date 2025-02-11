@@ -8,24 +8,24 @@ import ErrorBoundary from '../shared/ui/ErrorBoundary/ErrorBoundary';
 const Content = React.lazy(() => import('../widgets/Content/Content'));
 
 const Routes: FC = () => {
-    const defaultTab = tabsConfig[0]?.path || '/';
+  const defaultTab = tabsConfig[0]?.path || '/';
 
-    return (
-        <Switch>
-            <Route path="/" element={<Navigate to={defaultTab} replace />} />
-            <Route
-                path={'/:cocktailCode'}
-                element={
-                <ErrorBoundary>
-                    <Suspense fallback="Loading...">
-                         <Content tabs={tabsConfig} />
-                    </Suspense>
-                </ErrorBoundary>
-            }
-            />
-            <Route path="*" element={<NotFound />} />
-        </Switch>
-    );
-}
+  return (
+    <Switch>
+      <Route path="/" element={<Navigate to={defaultTab} replace />} />
+      <Route
+        path={'/:cocktailCode'}
+        element={
+          <ErrorBoundary>
+            <Suspense fallback="Loading...">
+              <Content tabs={tabsConfig} />
+            </Suspense>
+          </ErrorBoundary>
+        }
+      />
+      <Route path="*" element={<NotFound />} />
+    </Switch>
+  );
+};
 
 export default Routes;

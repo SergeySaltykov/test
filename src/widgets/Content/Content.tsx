@@ -11,59 +11,60 @@ import { NotFound } from '../../shared/ui';
 import './styled.scss';
 
 interface Params {
-    cocktailCode: ECocktailCode;
+  cocktailCode: ECocktailCode;
 }
 
 interface IContentProps {
-    tabs: Tab[];
+  tabs: Tab[];
 }
 
 export const Content: FC<IContentProps> = ({ tabs }) => {
-    const { cocktailCode } = useParams<keyof Params>() as Params;
-    const activeTab = tabs.find((tab) => tab.label === cocktailCode) || tabs[0];
-    const { getCocktail, drinks, loading } = useCocktailsStore(useShallow((state) => (
-        {
-            getCocktail: state.getCocktail,
-            drinks: state.idLists[activeTab.label],
-            loading: state.loading,
-            // error: state.error,
-        })));
-    const controllerRef = useRef<AbortController | null>(null);
+  const { cocktailCode } = useParams<keyof Params>() as Params;
+  const activeTab = tabs.find((tab) => tab.label === cocktailCode) || tabs[0];
+  const { getCocktail, drinks, loading } = useCocktailsStore(
+    useShallow((state) => ({
+      getCocktail: state.getCocktail,
+      drinks: state.idLists[activeTab.label],
+      loading: state.loading,
+      // error: state.error,
+    })),
+  );
+  const controllerRef = useRef<AbortController | null>(null);
 
-    const isValidCocktailCode = (cocktailCode: string): boolean => {
-        return tabs.some((tab) => tab.path === addSlashConditional(cocktailCode));
+  const isValidCocktailCode = (cocktailCode: string): boolean => {
+    return tabs.some((tab) => tab.path === addSlashConditional(cocktailCode));
+  };
+
+  useEffect(() => {
+    controllerRef.current = new AbortController();
+
+    // избавляемся от лишних запростов на табы. добавляем списки только один раз
+    if (!drinks) {
+      getCocktail(cocktailCode, controllerRef.current?.signal);
     }
 
-    useEffect(() => {
-        controllerRef.current = new AbortController();
+    return () => {
+      controllerRef.current?.abort();
+    };
+  }, [cocktailCode]);
 
-        // избавляемся от лишних запростов на табы. добавляем списки только один раз
-        if(!drinks) {
-            getCocktail(cocktailCode, controllerRef.current?.signal);
-        }
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-        return () => {
-            controllerRef.current?.abort();
-        };
-    }, [cocktailCode]);
+  /* TODO отдебажить ошибки и лоадинг */
+  // if (!isValidCocktailCode(cocktailCode) || error) {
+  if (!isValidCocktailCode(cocktailCode)) {
+    return <NotFound />;
+  }
 
-    if (loading) {
-        return <div>Loading...</div>;
-    }
-
-    /* TODO отдебажить ошибки и лоадинг */
-    // if (!isValidCocktailCode(cocktailCode) || error) {
-    if (!isValidCocktailCode(cocktailCode)) {
-        return <NotFound />
-    }
-
-    return (
-        <div className='content'>
-            {drinks?.map((id: string) => {
-                return <Card key={id} id={id} />
-            })}
-        </div>
-    );
-}
+  return (
+    <div className="content">
+      {drinks?.map((id: string) => {
+        return <Card key={id} id={id} />;
+      })}
+    </div>
+  );
+};
 
 export default Content;

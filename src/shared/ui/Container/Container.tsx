@@ -6,13 +6,13 @@ interface IContainerProps {
   left: ReactNode;
 }
 
-const Container: FC<IContainerProps> = ({right, left}) => {
+const Container: FC<IContainerProps> = ({ right, left }) => {
   return (
-    <div className='container'>
-        <div className='right'>{right}</div>
-        <div className='left'>{left}</div>
+    <div className="container">
+      <div className="right">{right}</div>
+      <div className="left">{left}</div>
     </div>
   );
-}
+};
 
 export default Container;
